@@ -6,14 +6,18 @@ namespace SmartHouseMVC.Models.Devices
 {
     public class EnergyMeter : Device, ICountEnergy
     {
-        public double AllPower { get; protected set; }
-
         public EnergyMeter() { }
         public EnergyMeter(string name, bool state)
         {
             Name = name;
             State = state;
+            if (state == true)
+            {
+                On();
+            }
         }
+
+        public double AllPower { get; protected set; }
 
         public override void On()
         {

@@ -11,6 +11,10 @@ namespace SmartHouseMVC.Models.Devices
         {
             Name = name;
             State = state;
+            if (state == true)
+            {
+                On();
+            }
         }
 
         public int TemperatureEnvironment { get; set; }

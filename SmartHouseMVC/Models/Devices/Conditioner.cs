@@ -13,12 +13,11 @@ namespace SmartHouseMVC.Models.Devices
         {
             Name = name;
             State = state;
+            Fan = fan;
             if (state == true)
             {
-                Temperature = 22;
-                Power = 4;
+                On();
             }
-            this.fan = fan;
         }
 
         public override int Temperature
@@ -51,12 +50,10 @@ namespace SmartHouseMVC.Models.Devices
                 if (value == true && Fan == false && State == true)
                 {
                     fan = value;
-                    Power += 0.1;
                 }
                 if (value == false && Fan == true && State == true)
                 {
                     fan = value;
-                    Power -= 0.2;
                 }
                 if (value == false && State == false)
                 {
@@ -93,11 +90,19 @@ namespace SmartHouseMVC.Models.Devices
         public void FanOn()
         {
             Fan = true;
+            if (Fan == true)
+            {
+                Power += 0.2;
+            }
         }
 
         public void FanOff()
         {
             Fan = false;
+            if (Fan == false)
+            {
+                Power -= 0.2;
+            }
         }
 
         public override void SetAutoTemperature()

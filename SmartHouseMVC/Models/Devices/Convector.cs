@@ -13,8 +13,7 @@ namespace SmartHouseMVC.Models.Devices
             State = state;
             if (state == true)
             {
-                Temperature = 20;
-                Power = 3.5;
+                On();
             }
         }
 
